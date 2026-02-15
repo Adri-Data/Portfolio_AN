@@ -1,0 +1,19 @@
+/* Estado inicial (arriba) */
+.apple-glass-top {
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+/* Estado al hacer scroll */
+.apple-glass-scrolled {
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.08),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+}
