@@ -1,3 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+  --color-google-blue: #4285F4;
+  --color-google-red: #DB4437;
+  --color-google-yellow: #F4B400;
+  --color-google-green: #0F9D58;
+}
+
 /* Estado inicial (arriba) */
 .apple-glass-top {
   border-radius: 9999px;
