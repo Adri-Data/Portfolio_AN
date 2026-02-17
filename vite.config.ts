@@ -17,19 +17,19 @@ export default defineConfig(({ mode }) => {
       tailwindcss(),
       ViteImageOptimizer({
         png: {
-          quality: 80,
+          quality: 70,
         },
         jpeg: {
-          quality: 75,
+          quality: 60,
         },
         jpg: {
-          quality: 75,
+          quality: 60,
         },
         webp: {
-          lossless: true,
+          quality: 60,
         },
         avif: {
-          lossless: true,
+          quality: 50,
         },
       }),
     ],
