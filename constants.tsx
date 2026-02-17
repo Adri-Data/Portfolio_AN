@@ -60,28 +60,28 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       {
         title: 'Mathematical Engineer & KDD24 Research',
         subtitle: 'LLM Multi-Turn Summarization',
-        image: '/about_cards/KDD_photo.jpg',
+        image: 'about_cards/KDD_photo.jpg',
         color: COLORS.blue,
         icon: <Zap size={24} />
       },
       {
         title: 'Fine-Tuner of RL using GRPO',
         subtitle: 'LLMs Specialist',
-        image: '/about_cards/Photo_GRPO.png',
+        image: 'about_cards/Photo_GRPO.png',
         color: COLORS.green,
         icon: <BrainCircuit size={24} />
       },
       {
         title: 'Full-Stack Developer',
         subtitle: 'Scalable AI Architectures',
-        image: '/about_cards/Photo_fullstack.png',
+        image: 'about_cards/Photo_fullstack.png',
         color: COLORS.yellow,
         icon: <Zap size={24} />
       },
       {
         title: 'Cloud Architect',
         subtitle: 'GCP Certified Systems, Azure and AWS experience',
-        image: '/about_cards/Photo_google.png',
+        image: 'about_cards/Photo_google.png',
         color: COLORS.red,
         icon: <Cloud size={24} />
       }
@@ -93,7 +93,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         description: 'Developed and architected scalable Retrieval-Augmented Generation (RAG) pipelines for diverse enterprise clients, focusing on embedding optimization and high-performance retrieval.',
         metrics: ['🚀 80% reduction in processing latency', '🎯 Faithfulness scores > 0.9 via Ragas', '🤖 Multi-agent workflow integration'],
         tech: ['LANGCHAIN', 'AI GUARDRAILS', 'REFACTORING', 'AZURE', 'PYTHON'],
-        image: '/projects/Photo_Chat.png'
+        image: 'projects/Photo_Chat.png'
       },
       {
         id: 'finetuning-grpo',
@@ -101,7 +101,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         description: 'Fine-tuned a reasoning model (GRPO) specifically for complex integral resolution and mathematical reasoning tasks.',
         metrics: ['📈 94% accuracy improvement', '🧠 Reduced hallucination rate by 45%', '⚡ Optimized for low-resource inference'],
         tech: ['Reforced learning', 'HuggingFace', 'Collab GPUs', 'DeepSeek'],
-        image: '/projects/GRPO_photo.png',
+        image: 'projects/GRPO_photo.png',
         repo: 'http://github.com/Adri-Data/FineTuning_GRPO',
         demo: 'https://ollama.com/ImFineThanks/Integrator-1-R1-ZERO-3B'
       },
@@ -115,7 +115,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
           '📊 Evaluated on billion-token datasets'
         ],
         tech: ['Python', 'LLMs', 'Academic Research', 'NLP'],
-        image: '/projects/KDD_2024_UC_Poster_Adrián_Navarro.pptx.png',
+        image: 'projects/KDD_2024_UC_Poster_Adrián_Navarro.pptx.png',
         repo: 'https://github.com/Adri-Data/TFG_Summarization_Large_Texts',
         demo: 'https://kdd2024.kdd.org/wp-content/uploads/2024/08/15-KDD-UC-Betrian.pdf'
       },
@@ -129,7 +129,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
           '🌐 Zero-downtime deployments'
         ],
         tech: ['AWS CDK', 'REFACTORING', 'GITHUB ACTIONS', 'LATENCY REDUCTION', 'GitHub Actions'],
-        image: '/projects/cloud_photo.png'
+        image: 'projects/cloud_photo.png'
       }
     ],
     experiences: [
@@ -143,7 +143,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
           'Refactored and parallelized complex AI pipelines, achieving 80% reduction in processing latency.',
           'Established rigorous benchmarking using Ragas to measure faithfulness and precision.'
         ],
-        logo: '/logos/minsait.jpeg'
+        logo: 'logos/minsait.jpeg'
       },
       {
         company: 'Hiberus (Grupo Henneo)',
@@ -154,7 +154,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
           'Prototyped initial LLM-based workflows and optimized resources on Microsoft Azure.',
           'Implementation of automated data labeling and validation scripts.'
         ],
-        logo: '/logos/hiberus.jpeg'
+        logo: 'logos/hiberus.jpeg'
       },
       {
         company: 'Universitat Pompeu Fabra (UPF)',
@@ -165,7 +165,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
           'Honors in Linear Algebra, Algorithm Design, Visual Analytics, and Project Management.',
           'Advanced programming and cloud-based AI product management focus.'
         ],
-        logo: '/logos/UPF.png',
+        logo: 'logos/UPF.png',
         isEducation: true
       }
     ]
@@ -211,28 +211,28 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       {
         title: 'Ingeniero Matemático e Investigador KDD24',
         subtitle: 'Resumen Multi-turno con LLMs',
-        image: '/about_cards/KDD_photo.jpg',
+        image: 'about_cards/KDD_photo.jpg',
         color: COLORS.blue,
         icon: <Zap size={24} />
       },
       {
         title: 'Fine-Tuner of RL con GRPO',
         subtitle: 'Especialista en LLMs',
-        image: '/about_cards/Photo_GRPO.png',
+        image: 'about_cards/Photo_GRPO.png',
         color: COLORS.green,
         icon: <BrainCircuit size={24} />
       },
       {
         title: 'Desarrollador Full-Stack',
         subtitle: 'Arquitecturas de IA Escalables',
-        image: '/about_cards/Photo_fullstack.png',
+        image: 'about_cards/Photo_fullstack.png',
         color: COLORS.yellow,
         icon: <Zap size={24} />
       },
       {
         title: 'Arquitecto Cloud',
         subtitle: 'Sistemas Certificados GCP, experiencia en Azure y AWS',
-        image: '/about_cards/Photo_google.png',
+        image: 'about_cards/Photo_google.png',
         color: COLORS.red,
         icon: <Cloud size={24} />
       }
@@ -244,7 +244,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         description: 'Desarrollo y arquitectura de pipelines RAG escalables para diversos clientes corporativos, optimizando embeddings y recuperación de alta performance.',
         metrics: ['🚀 Reducción del 80% en latencia', '🎯 Puntuaciones de fidelidad > 0.9 (Ragas)', '🤖 Integración de flujos multi-agente'],
         tech: ['LANGCHAIN', 'AI GUARDRAILS', 'REFACTORING', 'AZURE', 'PYTHON'],
-        image: '/projects/Photo_Chat.png'
+        image: 'projects/Photo_Chat.png'
       },
       {
         id: 'finetuning-grpo',
@@ -252,7 +252,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         description: 'Fine-tuning de un modelo de razonamiento (GRPO) específicamente para resolución de integrales complejas y tareas matemáticas.',
         metrics: ['📈 94% de mejora en precisión', '🧠 Reducción del 45% en alucinaciones', '⚡ Optimizado para inferencia en bajos recursos'],
         tech: ['Reforced learning', 'HuggingFace', 'Collab GPUs', 'DeepSeek'],
-        image: '/projects/GRPO_photo.png',
+        image: 'projects/GRPO_photo.png',
         repo: 'http://github.com/Adri-Data/FineTuning_GRPO',
         demo: 'https://ollama.com/ImFineThanks/Integrator-1-R1-ZERO-3B'
       },
@@ -266,7 +266,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
           '📊 Evaluado en datasets de miles de millones de tokens'
         ],
         tech: ['Python', 'LLMs', 'Academic Research', 'NLP'],
-        image: '/projects/KDD_2024_UC_Poster_Adrián_Navarro.pptx.png',
+        image: 'projects/KDD_2024_UC_Poster_Adrián_Navarro.pptx.png',
         repo: 'https://github.com/Adri-Data/TFG_Summarization_Large_Texts',
         demo: 'https://kdd2024.kdd.org/wp-content/uploads/2024/08/15-KDD-UC-Betrian.pdf'
       },
@@ -280,7 +280,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
           '🌐 Despliegues sin tiempo de inactividad'
         ],
         tech: ['AWS CDK', 'REFACTORING', 'GITHUB ACTIONS', 'LATENCY REDUCTION', 'GitHub Actions'],
-        image: '/projects/cloud_photo.png'
+        image: 'projects/cloud_photo.png'
       }
     ],
     experiences: [
@@ -294,7 +294,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
           'Refactorización y paralelización de pipelines complejos, logrando reducción del 80% en latencia.',
           'Establecimiento de benchmarks rigurosos con Ragas para medir fidelidad y precisión.'
         ],
-        logo: '/logos/minsait.jpeg'
+        logo: 'logos/minsait.jpeg'
       },
       {
         company: 'Hiberus (Grupo Henneo)',
@@ -305,7 +305,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
           'Prototypado de flujos basados en LLM y optimización de recursos en Microsoft Azure.',
           'Implementación de scripts automatizados para etiquetado y validación de datos.'
         ],
-        logo: '/logos/hiberus.jpeg'
+        logo: 'logos/hiberus.jpeg'
       },
       {
         company: 'Universitat Pompeu Fabra (UPF)',
@@ -316,7 +316,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
           'Matrículas de honor en Álgebra Lineal, Diseño de Algoritmos, Visual Analytics y Gestión de Proyectos.',
           'Foco en programación avanzada y gestión de productos de IA en la nube.'
         ],
-        logo: '/logos/UPF.png',
+        logo: 'logos/UPF.png',
         isEducation: true
       }
     ]

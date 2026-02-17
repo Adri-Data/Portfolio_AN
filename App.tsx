@@ -16,7 +16,7 @@ const App: React.FC = () => {
   const [showFAQ, setShowFAQ] = useState(false);
 
   const t = TRANSLATIONS[language];
-  const cvPath = "/CV_Adrian_AI_ENGINEER_EN_P.pdf";
+  const cvPath = "CV_Adrian_AI_ENGINEER_EN_P.pdf";
   const kddLink = "https://kdd2024.kdd.org/wp-content/uploads/2024/08/15-KDD-UC-Betrian.pdf";
 
   useEffect(() => {
@@ -144,7 +144,7 @@ const App: React.FC = () => {
             <div className="relative group animate-fade-in">
               <div className="absolute -inset-2 bg-gradient-to-tr from-google-blue via-google-red to-google-yellow rounded-full blur-xl opacity-50 group-hover:opacity-100 transition duration-1000"></div>
               <img
-                src="/foto.jpeg"
+                src="foto.jpeg"
                 alt="Adrián Navarro"
                 className="relative w-44 h-44 md:w-60 md:h-60 rounded-full border-8 border-white dark:border-white/20 shadow-2xl bg-white object-cover transform transition-transform group-hover:scale-105"
               />
