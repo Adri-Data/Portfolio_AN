@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
-import NeuralBackground from './components/NeuralBackground';
+const NeuralBackground = React.lazy(() => import('./components/NeuralBackground'));
 import { TRANSLATIONS, SOCIAL_LINKS, COLORS } from './constants';
 import { Language, Project } from './types';
 import { TECH_LINKS } from './tech_links';
@@ -111,7 +111,9 @@ const App: React.FC = () => {
   return (
     <div className={`min-h-screen relative ${darkMode ? 'dark text-white' : 'text-gray-900'} overflow-x-hidden`}>
       <div className="fixed inset-0 -z-30 bg-[#f1f3f4] dark:bg-[#0b0f19] transition-colors duration-500"></div>
-      <NeuralBackground darkMode={darkMode} />
+      <React.Suspense fallback={null}>
+        <NeuralBackground darkMode={darkMode} />
+      </React.Suspense>
 
       {/* Fixed Isla Background - Follows the user while scrolling */}
       <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[94vw] h-full bg-white/2 dark:bg-[#0b0f19]/5 backdrop-blur-[2px] shadow-[0_0_80px_rgba(0,0,0,0.05)] dark:shadow-[0_0_100px_rgba(0,0,0,0.3)] pointer-events-none z-[-1]"></div>
@@ -146,6 +148,11 @@ const App: React.FC = () => {
               <img
                 src="foto.jpeg"
                 alt="Adrián Navarro"
+                fetchPriority="high"
+                loading="eager"
+                decoding="async"
+                width="240"
+                height="240"
                 className="relative w-44 h-44 md:w-60 md:h-60 rounded-full border-8 border-white dark:border-white/20 shadow-2xl bg-white object-cover transform transition-transform group-hover:scale-105"
               />
             </div>
@@ -222,7 +229,7 @@ const App: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {t.about_cards.map((card, i) => (
                   <div key={i} className="group relative rounded-[2.5rem] overflow-hidden shadow-2xl hover:shadow-google-blue/30 transition-all duration-500 aspect-square md:aspect-auto md:h-72 border-4 border-white dark:border-gray-800 bg-white dark:bg-gray-800">
-                    <img src={card.image} alt={card.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100" />
+                    <img src={card.image} alt={card.title} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
                     <div className="absolute bottom-0 left-0 p-8 text-white space-y-2">
                       <div className="p-3 w-fit rounded-2xl bg-white/20 backdrop-blur-xl mb-3 shadow-lg">
@@ -262,7 +269,7 @@ const App: React.FC = () => {
               {t.projects.map((project) => (
                 <div key={project.id} className="group rounded-[3rem] overflow-hidden shadow-2xl transition-all duration-500 border-4 border-[#e2e8f0] dark:border-gray-800 bg-[#f8fafc]/40 dark:bg-gray-900/50 hover:border-google-blue/40">
                   <div className="h-80 overflow-hidden relative">
-                    <img src={project.image} alt={project.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
+                    <img src={project.image} alt={project.title} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
                     <div className="absolute top-8 left-8 flex flex-wrap gap-3">
                       {project.tech.slice(0, 3).map(tech => (
                         <span key={tech} className="px-5 py-2.5 bg-google-blue text-white text-xs font-black uppercase tracking-widest rounded-2xl shadow-xl">
@@ -378,7 +385,7 @@ const App: React.FC = () => {
                         <h3 className="text-4xl font-black text-gray-900 dark:text-white tracking-tight leading-none">{exp.role}</h3>
                         <div className="flex items-center gap-4">
                           <div className="w-14 h-14 rounded-xl bg-white shadow-xl p-2 flex items-center justify-center border-2 border-gray-200 overflow-hidden">
-                            {exp.logo ? <img src={exp.logo} alt={exp.company} className="max-w-full max-h-full object-contain" /> : <Globe size={20} />}
+                            {exp.logo ? <img src={exp.logo} alt={exp.company} loading="lazy" decoding="async" className="max-w-full max-h-full object-contain" /> : <Globe size={20} />}
                           </div>
                           <h4 className={`text-2xl font-black uppercase tracking-widest ${exp.isEducation ? 'text-google-red' : 'text-google-blue'}`}>
                             {exp.company}
