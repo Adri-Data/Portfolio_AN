@@ -194,6 +194,7 @@ const App: React.FC = () => {
                   <div key={idx} className="relative">
                     <button
                       onClick={() => isShare ? handleShare() : window.open(link.url, '_blank')}
+                      aria-label={link.label}
                       className={`p-5 bg-white dark:bg-gray-800 rounded-2xl shadow-xl border-2 border-gray-200 dark:border-gray-700 transition-all text-gray-800 dark:text-gray-400 transform hover:-translate-y-2 hover:scale-110 hover:text-white ${bgColors[idx % bgColors.length]}`}
                       title={link.label}
                     >
@@ -315,6 +316,7 @@ const App: React.FC = () => {
             <div className="flex justify-center mt-12">
               <button
                 onClick={() => setShowFAQ(!showFAQ)}
+                aria-label={showFAQ ? t.faq_btn_close : t.faq_btn_open}
                 className="px-8 py-4 border-4 border-google-blue text-google-blue rounded-2xl font-black hover:bg-google-blue hover:text-white transition-all shadow-xl"
               >
                 {showFAQ ? t.faq_btn_close : t.faq_btn_open}
@@ -510,6 +512,7 @@ const App: React.FC = () => {
                     <button
                       key={idx}
                       onClick={() => handleShare()}
+                      aria-label={link.label}
                       className="text-gray-400 hover:text-google-blue hover:scale-150 transition-all transform"
                       title={link.label}
                     >
@@ -563,6 +566,7 @@ const App: React.FC = () => {
                       {/* Share button kept in extended modal */}
                       <button
                         onClick={() => handleShare(selectedProject.title, selectedProject.description)}
+                        aria-label="Share Project"
                         className="p-4 bg-gray-100 dark:bg-gray-800 rounded-2xl text-google-blue shadow-lg hover:scale-110 transition-transform"
                         title="Share Project"
                       >

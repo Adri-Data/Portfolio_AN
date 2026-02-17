@@ -73,6 +73,7 @@ const Navbar: React.FC<NavbarProps> = ({
       <div className="flex items-center space-x-3">
         <button
           onClick={toggleLanguage}
+          aria-label="Change language"
           className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors flex items-center space-x-1"
         >
           <Languages size={18} className="text-gray-900 dark:text-white" />
@@ -83,6 +84,7 @@ const Navbar: React.FC<NavbarProps> = ({
 
         <button
           onClick={toggleDarkMode}
+          aria-label="Toggle dark mode"
           className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
         >
           {darkMode ? (

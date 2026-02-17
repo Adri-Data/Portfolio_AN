@@ -15,12 +15,12 @@ const NeuralBackground: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
 
     let animationFrameId: number;
     let particles: Particle[] = [];
-    const particleCount = 120;
+    const particleCount = 80;
     const connectionDistance = 120;
     const friction = 0.985;
     const mouseRadius = 150;
     const mouseForce = 0.04;
-    const maxClusterSize = 8; // Only the closest 8 particles follow the mouse
+    const maxClusterSize = 6;
 
     class Particle {
       x: number;
@@ -41,7 +41,7 @@ const NeuralBackground: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
         this.originalY = this.y;
         this.vx = (Math.random() - 0.5) * 1.2;
         this.vy = (Math.random() - 0.5) * 1.2;
-        this.size = Math.random() * 4 + 2;
+        this.size = Math.random() * 3 + 1.5;
         this.seed = Math.random() * 100;
         const colorKeys = Object.keys(COLORS) as (keyof typeof COLORS)[];
         this.color = COLORS[colorKeys[Math.floor(Math.random() * colorKeys.length)]];
@@ -51,7 +51,6 @@ const NeuralBackground: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
         this.vx *= friction;
         this.vy *= friction;
 
-        // Calm autonomous drift
         this.vx += Math.sin(time * 0.4 + this.seed) * 0.015;
         this.vy += Math.cos(time * 0.4 + this.seed) * 0.015;
 
@@ -64,7 +63,6 @@ const NeuralBackground: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
           this.vx += dx * force * mouseForce;
           this.vy += dy * force * mouseForce;
         } else {
-          // Subtle return to base position
           const ox = this.originalX - this.x;
           const oy = this.originalY - this.y;
           this.vx += ox * 0.002;
@@ -84,11 +82,8 @@ const NeuralBackground: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
         context.beginPath();
         context.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         context.fillStyle = this.color;
-        context.shadowBlur = 6;
-        context.shadowColor = this.color;
-        context.globalAlpha = 0.5;
+        context.globalAlpha = 0.6;
         context.fill();
-        context.shadowBlur = 0;
         context.globalAlpha = 1.0;
       }
     }
@@ -100,50 +95,58 @@ const NeuralBackground: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
     };
 
     const animate = () => {
+      if (document.hidden) {
+        animationFrameId = requestAnimationFrame(animate);
+        return;
+      }
+
       timeRef.current += 0.005;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // 1. Calculate and tag particles for clustering limit
+      const mouseX = mouseRef.current.x;
+      const mouseY = mouseRef.current.y;
+
       const sortedByDistance = [...particles].sort((a, b) => {
-        const dax = mouseRef.current.x - a.x;
-        const day = mouseRef.current.y - a.y;
-        const dbx = mouseRef.current.x - b.x;
-        const dby = mouseRef.current.y - b.y;
+        const dax = mouseX - a.x;
+        const day = mouseY - a.y;
+        const dbx = mouseX - b.x;
+        const dby = mouseY - b.y;
         return (dax * dax + day * day) - (dbx * dbx + dby * dby);
       });
 
       const clusteredIds = new Set(sortedByDistance.slice(0, maxClusterSize).map(p => particles.indexOf(p)));
 
-      // 2. Update and draw
       particles.forEach((p, idx) => {
         p.update(canvas.width, canvas.height, mouseRef.current, timeRef.current, clusteredIds.has(idx));
         p.draw(ctx);
       });
 
-      // 3. Draw Connections
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
+      const strokeBaseColor = darkMode ? '255, 255, 255' : '66, 133, 244';
 
-          if (dist < connectionDistance) {
-            const mdx = mouseRef.current.x - particles[i].x;
-            const mdy = mouseRef.current.y - particles[i].y;
-            const mDist = Math.sqrt(mdx * mdx + mdy * mdy);
+      for (let i = 0; i < particles.length; i++) {
+        const pi = particles[i];
+        for (let j = i + 1; j < particles.length; j++) {
+          const pj = particles[j];
+          const dx = pi.x - pj.x;
+          const dy = pi.y - pj.y;
+          const distSq = dx * dx + dy * dy;
+
+          if (distSq < connectionDistance * connectionDistance) {
+            const dist = Math.sqrt(distSq);
+            const mdx = mouseX - pi.x;
+            const mdy = mouseY - pi.y;
+            const mDistSq = mdx * mdx + mdy * mdy;
 
             const baseOpacity = 1 - (dist / connectionDistance);
-            const isNearMouse = mDist < mouseRadius && clusteredIds.has(i);
-            const mouseBonus = isNearMouse ? (1 - mDist / mouseRadius) * 0.5 : 0;
+            const isNearMouse = mDistSq < mouseRadius * mouseRadius && clusteredIds.has(i);
+            const mouseBonus = isNearMouse ? (1 - Math.sqrt(mDistSq) / mouseRadius) * 0.5 : 0;
             const finalOpacity = (baseOpacity * 0.15) + mouseBonus;
 
             ctx.beginPath();
             ctx.lineWidth = isNearMouse ? 1.5 : 0.6;
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-
-            const strokeColor = darkMode ? '255, 255, 255' : '66, 133, 244';
-            ctx.strokeStyle = `rgba(${strokeColor}, ${finalOpacity * 0.45})`;
+            ctx.moveTo(pi.x, pi.y);
+            ctx.lineTo(pj.x, pj.y);
+            ctx.strokeStyle = `rgba(${strokeBaseColor}, ${finalOpacity * 0.45})`;
             ctx.stroke();
           }
         }
