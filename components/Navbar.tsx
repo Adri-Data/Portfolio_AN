@@ -29,6 +29,7 @@ const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <nav
+      aria-label="Main Navigation"
       className={`
         fixed top-4 inset-x-4 z-50
         transition-all duration-500 ease-out
