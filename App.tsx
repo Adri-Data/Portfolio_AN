@@ -148,7 +148,7 @@ const App: React.FC = () => {
             <div className="relative group animate-fade-in">
               <div className="absolute -inset-2 bg-gradient-to-tr from-google-blue via-google-red to-google-yellow rounded-full blur-xl opacity-50 group-hover:opacity-100 transition duration-1000"></div>
               <img
-                src="foto.jpeg"
+                src="foto.webp"
                 alt="Adrián Navarro"
                 fetchPriority="high"
                 loading="eager"
