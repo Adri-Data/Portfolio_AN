@@ -35,7 +35,7 @@ const Navbar: React.FC<NavbarProps> = ({
         transition-all duration-500 ease-out
         apple-glass
         apple-glass-top ${scrolled ? 'shadow-lg' : ''}
-        px-8 py-4
+        px-4 md:px-8 py-3 md:py-4
         flex justify-between items-center
       `}
     >

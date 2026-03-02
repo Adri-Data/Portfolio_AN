@@ -119,7 +119,7 @@ const App: React.FC = () => {
       <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[94vw] h-full bg-white/2 dark:bg-[#0b0f19]/5 backdrop-blur-[2px] shadow-[0_0_80px_rgba(0,0,0,0.05)] dark:shadow-[0_0_100px_rgba(0,0,0,0.3)] pointer-events-none z-[-1]"></div>
 
       {/* Main Container - Fully transparent to reveal particles and fixed Isla shadows */}
-      <div className="relative min-h-screen w-[94vw] mx-auto transition-colors duration-500 z-0">
+      <div className="relative min-h-screen w-full px-4 md:w-[94vw] md:px-0 mx-auto transition-colors duration-500 z-0 overflow-x-hidden">
         <header role="banner">
           <Navbar
             darkMode={darkMode}
@@ -129,7 +129,7 @@ const App: React.FC = () => {
           />
         </header>
 
-        <main role="main" className="relative z-10 pt-20 px-4 md:px-8 lg:px-16 max-w-7xl mx-auto space-y-32 pb-20">
+        <main role="main" className="relative z-10 pt-20 px-0 md:px-8 lg:px-16 max-w-7xl mx-auto space-y-24 md:space-y-32 pb-20">
 
           {/* HERO SECTION */}
           <section id="home" className="min-h-[90vh] flex flex-col justify-center items-center text-center space-y-12 relative overflow-hidden scroll-mt-32">
@@ -160,29 +160,29 @@ const App: React.FC = () => {
             </div>
 
             <div className="space-y-6 max-w-4xl mx-auto animate-slide-up">
-              <h1 className="text-6xl md:text-8xl font-black tracking-tight leading-tight">
-                <span className="ml-4 dark:text-white">Adrián</span>
-                <span className="ml-4 dark:text-white">Navarro</span>
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-tight flex flex-col md:flex-row md:justify-center md:gap-4">
+                <span className="dark:text-white text-center">Adrián</span>
+                <span className="dark:text-white text-center">Navarro</span>
               </h1>
-              <p className="text-2xl md:text-4xl text-gray-800 dark:text-gray-300 font-bold leading-tight">
+              <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-800 dark:text-gray-300 font-bold leading-tight px-2">
                 {t.hero_subtitle}
               </p>
             </div>
 
-            <div className="flex flex-wrap justify-center gap-6 animate-slide-up animation-delay-300">
-              <a href="#projects" className="px-10 py-5 bg-google-blue text-white rounded-2xl font-black text-lg shadow-[0_15px_40px_-10px_rgba(66,133,244,0.6)] hover:shadow-[0_25px_60px_-10px_rgba(66,133,244,0.8)] hover:-translate-y-2 transition-all flex items-center gap-3">
+            <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 sm:gap-6 animate-slide-up animation-delay-300 w-full px-4 sm:px-0">
+              <a href="#projects" className="w-full sm:w-auto px-6 py-4 md:px-10 md:py-5 bg-google-blue text-white rounded-2xl font-black text-base md:text-lg shadow-[0_15px_40px_-10px_rgba(66,133,244,0.6)] hover:shadow-[0_25px_60px_-10px_rgba(66,133,244,0.8)] hover:-translate-y-2 transition-all flex items-center justify-center gap-3">
                 {t.hero_cta} <ArrowRight size={22} />
               </a>
               <a
                 href={cvPath}
                 download
-                className="px-10 py-5 bg-white dark:bg-gray-800 border-4 border-google-yellow rounded-2xl font-black text-lg shadow-2xl hover:bg-google-yellow hover:text-white dark:hover:bg-google-yellow transition-all flex items-center gap-3 text-google-yellow dark:text-white group"
+                className="w-full sm:w-auto px-6 py-4 md:px-10 md:py-5 bg-white dark:bg-gray-800 border-4 border-google-yellow rounded-2xl font-black text-base md:text-lg shadow-2xl hover:bg-google-yellow hover:text-white dark:hover:bg-google-yellow transition-all flex items-center justify-center gap-3 text-google-yellow dark:text-white group"
               >
                 {t.cv_label} <Download size={22} className="group-hover:bounce transition-transform" />
               </a>
             </div>
 
-            <div className="flex gap-8 mt-4 animate-fade-in animation-delay-500">
+            <div className="flex flex-wrap justify-center gap-4 md:gap-8 mt-4 animate-fade-in animation-delay-500">
               {SOCIAL_LINKS.map((link, idx) => {
                 const bgColors = [
                   'hover:bg-[#0077b5]', // LinkedIn
@@ -197,7 +197,7 @@ const App: React.FC = () => {
                     <button
                       onClick={() => isShare ? handleShare() : window.open(link.url, '_blank')}
                       aria-label={link.label}
-                      className={`p-5 bg-white dark:bg-gray-800 rounded-2xl shadow-xl border-2 border-gray-200 dark:border-gray-700 transition-all text-gray-800 dark:text-gray-400 transform hover:-translate-y-2 hover:scale-110 hover:text-white ${bgColors[idx % bgColors.length]}`}
+                      className={`p-4 md:p-5 bg-white dark:bg-gray-800 rounded-2xl shadow-xl border-2 border-gray-200 dark:border-gray-700 transition-all text-gray-800 dark:text-gray-400 transform hover:-translate-y-2 hover:scale-110 hover:text-white ${bgColors[idx % bgColors.length]}`}
                       title={link.label}
                     >
                       {React.cloneElement(link.icon as React.ReactElement<any>, { size: 28 })}
@@ -215,15 +215,15 @@ const App: React.FC = () => {
               <div className="flex-grow h-2 bg-gradient-to-r from-google-blue via-google-red to-google-yellow rounded-full opacity-40 shadow-sm"></div>
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-16 items-start">
-              <div className="space-y-8 text-2xl text-gray-900 dark:text-gray-300 leading-relaxed font-bold">
+            <div className="grid lg:grid-cols-2 gap-10 md:gap-16 items-start">
+              <div className="space-y-6 md:space-y-8 text-lg md:text-xl lg:text-2xl text-gray-900 dark:text-gray-300 leading-relaxed font-bold">
                 <p>
                   {t.about_desc_1}
                 </p>
                 <p>
                   {t.about_desc_2}
                 </p>
-                <div className="p-10 bg-white dark:bg-gray-800 border-l-[12px] border-google-green rounded-r-[3rem] italic shadow-2xl relative overflow-hidden">
+                <div className="p-6 md:p-10 bg-white dark:bg-gray-800 border-l-[8px] md:border-l-[12px] border-google-green rounded-r-[2rem] md:rounded-r-[3rem] italic shadow-2xl relative overflow-hidden">
                   <div className="absolute top-0 right-0 p-4 opacity-5 text-google-green"><BrainCircuit size={100} /></div>
                   "{t.context_quote}"
                 </div>
@@ -254,7 +254,7 @@ const App: React.FC = () => {
               <h2 id="tech-title" className="text-4xl md:text-5xl font-black uppercase tracking-widest">{t.tech_stack_title}</h2>
               <div className="flex-grow h-2 bg-gradient-to-r from-google-green via-google-yellow to-google-red rounded-full opacity-40 shadow-sm"></div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-10">
               <TechGroup color={COLORS.blue} icon={<BrainCircuit className="text-google-blue" size={40} />} title={t.tech_cat_1} items={['LangChain', 'LangSmith', 'RAG', 'Ragas', 'Hugging Face', 'OpenAI', 'Claude', 'Gemini', 'Llama', 'DeepSeek', 'Qwen', 'Multi-Agent', 'RL', 'GRPO', 'Fine-Tuning', 'Prompt Engineering', 'AI Guardrails']} />
               <TechGroup color={COLORS.red} icon={<Binary className="text-google-red" size={40} />} title={t.tech_cat_2} items={['Python', 'Rust', 'SQL', 'Java', 'C++', 'PyTorch', 'TensorFlow', 'Algorithm Design', 'Linear Algebra', 'Statistical Analysis', 'Project Management', 'NumPy', 'Pandas']} />
               <TechGroup color={COLORS.yellow} icon={<Cloud className="text-google-yellow" size={40} />} title={t.tech_cat_3} items={['AWS', 'AWS CDK', 'Azure', 'GCP', 'GitHub Actions', 'Docker', 'Kubernetes', 'CI/CD', 'MLflow', 'Redis', 'Pinecone', 'FAISS', 'Elasticsearch']} />
@@ -268,7 +268,7 @@ const App: React.FC = () => {
               <h2 id="projects-title" className="text-4xl md:text-5xl font-black uppercase tracking-widest">{t.projects_title}</h2>
               <div className="flex-grow h-2 bg-gradient-to-r from-google-red via-google-blue to-google-green rounded-full opacity-40 shadow-sm"></div>
             </div>
-            <div className="grid md:grid-cols-2 gap-16">
+            <div className="grid md:grid-cols-2 gap-8 md:gap-16">
               {t.projects.map((project) => (
                 <div key={project.id} className="group rounded-[3rem] overflow-hidden shadow-2xl transition-all duration-500 border-4 border-[#e2e8f0] dark:border-gray-800 bg-[#f8fafc]/40 dark:bg-gray-900/50 hover:border-google-blue/40">
                   <div className="h-80 overflow-hidden relative">
@@ -281,10 +281,10 @@ const App: React.FC = () => {
                       ))}
                     </div>
                   </div>
-                  <div className="p-12 space-y-8">
+                  <div className="p-8 md:p-12 space-y-6 md:space-y-8">
                     <div>
-                      <h3 className="text-4xl font-black mb-4 group-hover:text-google-blue transition-colors tracking-tight text-gray-900 dark:text-white">{project.title}</h3>
-                      <p className="text-xl text-gray-700 dark:text-gray-400 font-bold leading-relaxed line-clamp-2">{project.description}</p>
+                      <h3 className="text-2xl md:text-4xl font-black mb-4 group-hover:text-google-blue transition-colors tracking-tight text-gray-900 dark:text-white">{project.title}</h3>
+                      <p className="text-lg md:text-xl text-gray-700 dark:text-gray-400 font-bold leading-relaxed line-clamp-2">{project.description}</p>
                     </div>
                     <div className="space-y-4">
                       {project.metrics.map((metric, i) => (
@@ -293,10 +293,10 @@ const App: React.FC = () => {
                         </div>
                       ))}
                     </div>
-                    <div className="flex gap-4 items-center">
+                    <div className="flex flex-col sm:flex-row gap-4 items-center w-full">
                       <button
                         onClick={() => setSelectedProject(project)}
-                        className="flex-grow flex items-center justify-center gap-3 py-6 bg-google-blue text-white text-lg font-black uppercase tracking-widest rounded-[1.5rem] shadow-xl hover:scale-[1.02] transition-all"
+                        className="w-full sm:flex-grow flex items-center justify-center gap-3 py-4 md:py-6 bg-google-blue text-white text-base md:text-lg font-black uppercase tracking-widest rounded-[1.5rem] shadow-xl hover:scale-[1.02] transition-all"
                       >
                         {t.case_btn} <ChevronRight size={24} />
                       </button>
@@ -305,7 +305,7 @@ const App: React.FC = () => {
                           href={kddLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="px-8 py-6 border-4 border-google-red text-google-red rounded-[1.5rem] font-black hover:bg-google-red hover:text-white transition-all flex items-center gap-2"
+                          className="w-full sm:w-auto justify-center px-8 py-4 md:py-6 border-4 border-google-red text-google-red rounded-[1.5rem] font-black hover:bg-google-red hover:text-white transition-all flex items-center gap-2"
                         >
                           PDF <Globe size={20} />
                         </a>
@@ -377,21 +377,21 @@ const App: React.FC = () => {
               <h2 id="experience-title" className="text-4xl md:text-5xl font-black uppercase tracking-widest">{t.experience_title}</h2>
               <div className="flex-grow h-2 bg-gradient-to-r from-google-yellow via-google-red to-google-blue rounded-full opacity-40 shadow-sm"></div>
             </div>
-            <div className="space-y-16">
+            <div className="space-y-12 md:space-y-16">
               {t.experiences.map((exp, idx) => (
-                <div key={idx} className="relative pl-16 md:pl-24 border-l-8 border-gray-300 dark:border-gray-800 pb-16 last:pb-0">
-                  <div className={`absolute left-[-22px] top-0 w-10 h-10 rounded-full ring-[12px] ring-[#f1f3f4] dark:ring-gray-900 shadow-2xl flex items-center justify-center ${exp.isEducation ? 'bg-google-red' : 'bg-google-blue'}`}>
+                <div key={idx} className="relative pl-10 md:pl-24 border-l-4 md:border-l-8 border-gray-300 dark:border-gray-800 pb-12 md:pb-16 last:pb-0">
+                  <div className={`absolute left-[-22px] md:left-[-24px] top-0 w-10 h-10 rounded-full ring-[8px] md:ring-[12px] ring-[#f1f3f4] dark:ring-gray-900 shadow-2xl flex items-center justify-center ${exp.isEducation ? 'bg-google-red' : 'bg-google-blue'}`}>
                     {exp.isEducation ? <Award size={20} className="text-white" /> : <BrainCircuit size={20} className="text-white" />}
                   </div>
                   <div className="space-y-6">
                     <div className="flex flex-wrap justify-between items-center gap-6">
                       <div className="space-y-2">
-                        <h3 className="text-4xl font-black text-gray-900 dark:text-white tracking-tight leading-none">{exp.role}</h3>
-                        <div className="flex items-center gap-4">
-                          <div className="w-14 h-14 rounded-xl bg-white shadow-xl p-2 flex items-center justify-center border-2 border-gray-200 overflow-hidden">
+                        <h3 className="text-2xl md:text-4xl font-black text-gray-900 dark:text-white tracking-tight leading-none">{exp.role}</h3>
+                        <div className="flex items-center gap-3 md:gap-4">
+                          <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl bg-white shadow-xl p-2 flex items-center justify-center border-2 border-gray-200 overflow-hidden">
                             {exp.logo ? <img src={exp.logo} alt={exp.company} loading="lazy" decoding="async" className="max-w-full max-h-full object-contain" /> : <Globe size={20} />}
                           </div>
-                          <h4 className={`text-2xl font-black uppercase tracking-widest ${exp.isEducation ? 'text-google-red' : 'text-google-blue'}`}>
+                          <h4 className={`text-xl md:text-2xl font-black uppercase tracking-widest ${exp.isEducation ? 'text-google-red' : 'text-google-blue'}`}>
                             {exp.company}
                           </h4>
                         </div>
@@ -400,7 +400,7 @@ const App: React.FC = () => {
                         {exp.period}
                       </span>
                     </div>
-                    <ul className="mt-8 space-y-6 text-xl text-gray-800 dark:text-gray-300 font-bold">
+                    <ul className="mt-6 md:mt-8 space-y-4 md:space-y-6 text-lg md:text-xl text-gray-800 dark:text-gray-300 font-bold">
                       {exp.points.map((point, i) => (
                         <li key={i} className="flex gap-4 items-start">
                           <span className={`mt-2 shrink-0 ${exp.isEducation ? 'text-google-red' : 'text-google-blue'}`}><ChevronRight size={24} /></span>
@@ -420,9 +420,9 @@ const App: React.FC = () => {
               <h2 id="contact-title" className="text-4xl md:text-5xl font-black uppercase tracking-widest">{t.contact_title}</h2>
               <div className="flex-grow h-2 bg-gradient-to-r from-google-green via-google-blue to-google-red rounded-full opacity-40 shadow-sm"></div>
             </div>
-            <div className="grid lg:grid-cols-5 gap-20">
-              <div className="lg:col-span-2 space-y-12">
-                <p className="text-3xl text-gray-900 dark:text-gray-300 font-bold leading-tight">
+            <div className="grid lg:grid-cols-5 gap-12 md:gap-20">
+              <div className="lg:col-span-2 space-y-8 md:space-y-12">
+                <p className="text-xl md:text-3xl text-gray-900 dark:text-gray-300 font-bold leading-tight">
                   Interested in working together? You may contact me using the form below.
                 </p>
                 <div className="space-y-8">
@@ -432,7 +432,7 @@ const App: React.FC = () => {
               </div>
               <form
                 onSubmit={handleFormSubmit}
-                className="lg:col-span-3 bg-white/40 dark:bg-gray-800/40 backdrop-blur-md p-12 md:p-16 rounded-[4rem] space-y-10 shadow-2xl border-4 border-gray-200 dark:border-gray-700 relative overflow-hidden"
+                className="lg:col-span-3 bg-white/40 dark:bg-gray-800/40 backdrop-blur-md p-8 md:p-16 rounded-[2.5rem] md:rounded-[4rem] space-y-8 md:space-y-10 shadow-2xl border-4 border-gray-200 dark:border-gray-700 relative overflow-hidden"
                 // @ts-ignore
                 mcp-role="form"
                 mcp-description="Hire Adrián Navarro as an AI Engineer. Submit your vision to start a collaboration."
@@ -451,7 +451,7 @@ const App: React.FC = () => {
                   </div>
                 ) : (
                   <>
-                    <div className="grid md:grid-cols-2 gap-10 relative">
+                    <div className="grid md:grid-cols-2 gap-6 md:gap-10 relative">
                       <div className="space-y-4">
                         <label className="text-sm font-black uppercase tracking-widest ml-2 text-gray-500">Name</label>
                         <input required name="from_name" type="text" className="w-full p-6 rounded-[2rem] border-4 border-gray-300 dark:border-gray-800 dark:bg-gray-900/50 focus:border-google-blue outline-none transition-all font-bold text-xl shadow-inner text-gray-900 dark:text-white" placeholder="Your Name" />
@@ -463,12 +463,12 @@ const App: React.FC = () => {
                     </div>
                     <div className="space-y-4 relative">
                       <label className="text-sm font-black uppercase tracking-widest ml-2 text-gray-500">Your Vision</label>
-                      <textarea required name="message" rows={5} className="w-full p-6 rounded-[2rem] border-4 border-gray-300 dark:border-gray-800 dark:bg-gray-900/50 focus:border-google-blue outline-none transition-all font-bold text-xl shadow-inner resize-none text-gray-900 dark:text-white" placeholder="Have something in mind? Send me a message right here..."></textarea>
+                      <textarea required name="message" rows={5} className="w-full p-4 md:p-6 rounded-[1.5rem] md:rounded-[2rem] border-4 border-gray-300 dark:border-gray-800 dark:bg-gray-900/50 focus:border-google-blue outline-none transition-all font-bold text-lg md:text-xl shadow-inner resize-none text-gray-900 dark:text-white" placeholder="Have something in mind? Send me a message right here..."></textarea>
                     </div>
                     <button
                       disabled={formStatus === 'sending'}
                       type="submit"
-                      className="group w-full py-7 bg-google-blue text-white rounded-[2rem] font-black text-2xl shadow-2xl shadow-blue-500/40 hover:shadow-blue-500/60 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-5 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="group w-full py-5 md:py-7 bg-google-blue text-white rounded-[1.5rem] md:rounded-[2rem] font-black text-xl md:text-2xl shadow-2xl shadow-blue-500/40 hover:shadow-blue-500/60 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-5 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {formStatus === 'sending' ? (
                         <>Sending Message... <Loader2 className="animate-spin" size={32} /></>
@@ -543,42 +543,41 @@ const App: React.FC = () => {
         {selectedProject && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10 animate-fade-in">
             <div className="absolute inset-0 bg-black/60 backdrop-blur-2xl" onClick={() => setSelectedProject(null)}></div>
-            <div className="relative bg-white dark:bg-gray-900 w-full max-w-6xl max-h-[90vh] overflow-y-auto rounded-[3rem] shadow-[0_0_100px_rgba(0,0,0,0.5)] border-4 border-white/20">
+            <div className="relative bg-white dark:bg-gray-900 w-full max-w-6xl max-h-[90vh] overflow-y-auto rounded-[2rem] md:rounded-[3rem] shadow-[0_0_100px_rgba(0,0,0,0.5)] border-4 border-white/20">
               <button
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-8 right-8 p-4 bg-black/20 hover:bg-black/40 text-white rounded-full z-10 transition-colors backdrop-blur-md"
+                className="absolute top-4 right-4 md:top-8 md:right-8 p-3 md:p-4 bg-black/40 hover:bg-black/60 text-white rounded-full z-10 transition-colors backdrop-blur-md"
               >
-                <X size={32} />
+                <X size={24} className="md:w-8 md:h-8" />
               </button>
               <div className="grid lg:grid-cols-2">
-                <div className="h-80 lg:h-full relative">
+                <div className="h-48 sm:h-64 lg:h-full relative">
                   <img src={selectedProject.image} alt={selectedProject.title} className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent"></div>
                 </div>
-                <div className="p-10 md:p-20 space-y-12">
-                  <div className="space-y-6">
+                <div className="p-6 md:p-10 lg:p-20 space-y-8 md:space-y-12">
+                  <div className="space-y-4 md:space-y-6">
                     <div className="flex justify-between items-start">
-                      <div className="flex flex-wrap gap-4">
+                      <div className="flex flex-wrap gap-2 md:gap-4 pr-12">
                         {selectedProject.tech.map(t => (
-                          <span key={t} className="px-5 py-2 bg-google-blue/10 text-google-blue rounded-xl text-xs font-black uppercase tracking-widest">
+                          <span key={t} className="px-3 py-1 md:px-5 md:py-2 bg-google-blue/10 text-google-blue rounded-lg md:rounded-xl text-[10px] md:text-xs font-black uppercase tracking-widest">
                             {t}
                           </span>
                         ))}
                       </div>
-                      {/* Share button kept in extended modal */}
                       <button
                         onClick={() => handleShare(selectedProject.title, selectedProject.description)}
                         aria-label="Share Project"
-                        className="p-4 bg-gray-100 dark:bg-gray-800 rounded-2xl text-google-blue shadow-lg hover:scale-110 transition-transform"
+                        className="p-3 md:p-4 bg-gray-100 dark:bg-gray-800 rounded-xl md:rounded-2xl text-google-blue shadow-lg hover:scale-110 transition-transform flex-shrink-0 mt-[-2px] md:mt-[-8px]"
                         title="Share Project"
                       >
-                        <Share2 size={24} />
+                        <Share2 size={20} className="md:w-6 md:h-6" />
                       </button>
                     </div>
-                    <h2 className="text-5xl font-black text-gray-900 dark:text-white leading-none tracking-tighter">
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 dark:text-white leading-none tracking-tighter pt-2">
                       {selectedProject.title}
                     </h2>
-                    <p className="text-2xl text-gray-600 dark:text-gray-400 font-bold leading-relaxed">
+                    <p className="text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-400 font-bold leading-relaxed">
                       {selectedProject.description}
                     </p>
                   </div>
@@ -595,26 +594,26 @@ const App: React.FC = () => {
                     ))}
                   </div>
 
-                  <div className="flex gap-6">
+                  <div className="flex flex-col sm:flex-row gap-4 md:gap-6">
                     {selectedProject.repo && (
-                      <a href={selectedProject.repo} target="_blank" className="flex-grow text-center py-6 bg-google-blue text-white rounded-[1.5rem] font-black text-xl hover:scale-105 transition-all shadow-2xl">
+                      <a href={selectedProject.repo} target="_blank" className="flex-grow text-center py-4 md:py-6 bg-google-blue text-white rounded-[1.25rem] md:rounded-[1.5rem] font-black text-lg md:text-xl hover:scale-105 transition-all shadow-2xl">
                         {t.repo_btn}
                       </a>
                     )}
                     {selectedProject.id === 'rag-enterprise' ? (
-                      <button disabled className="flex-grow py-6 border-4 border-google-green text-google-green rounded-[1.5rem] font-black text-xl opacity-70">
+                      <button disabled className="flex-grow py-4 md:py-6 border-4 border-google-green text-google-green rounded-[1.25rem] md:rounded-[1.5rem] font-black text-lg md:text-xl opacity-70">
                         {t.soon_btn}
                       </button>
                     ) : selectedProject.id === 'mlops-platform' ? (
-                      <button disabled className="flex-grow py-6 border-4 border-gray-300 dark:border-gray-700 text-gray-400 dark:text-gray-500 rounded-[1.5rem] font-black text-xl opacity-60">
+                      <button disabled className="flex-grow py-4 md:py-6 border-4 border-gray-300 dark:border-gray-700 text-gray-400 dark:text-gray-500 rounded-[1.25rem] md:rounded-[1.5rem] font-black text-lg md:text-xl opacity-60">
                         {t.private_msg}
                       </button>
                     ) : selectedProject.demo ? (
-                      <a href={selectedProject.demo} target="_blank" className="flex-grow text-center py-6 border-4 border-google-red text-google-red rounded-[1.5rem] font-black text-xl hover:bg-google-red hover:text-white transition-all">
+                      <a href={selectedProject.demo} target="_blank" className="flex-grow text-center py-4 md:py-6 border-4 border-google-red text-google-red rounded-[1.25rem] md:rounded-[1.5rem] font-black text-lg md:text-xl hover:bg-google-red hover:text-white transition-all">
                         {selectedProject.id === 'kdd24-research' ? t.paper_btn : t.live_btn}
                       </a>
                     ) : (
-                      <button className="px-10 py-6 border-4 border-gray-200 dark:border-gray-700 rounded-[1.5rem] font-black text-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all text-gray-900 dark:text-white text-center flex-grow">
+                      <button className="px-6 md:px-10 py-4 md:py-6 border-4 border-gray-200 dark:border-gray-700 rounded-[1.25rem] md:rounded-[1.5rem] font-black text-lg md:text-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all text-gray-900 dark:text-white text-center flex-grow">
                         {t.live_btn}
                       </button>
                     )}
@@ -665,16 +664,16 @@ interface TechGroupProps {
 
 const TechGroup: React.FC<TechGroupProps> = ({ title, items, icon, color }) => (
   <div
-    className="p-10 bg-white dark:bg-gray-800 rounded-[3rem] space-y-8 hover:-translate-y-4 transition-all duration-700 group border-b-[12px] shadow-2xl relative overflow-hidden"
+    className="p-6 md:p-10 bg-white dark:bg-gray-800 rounded-[2rem] md:rounded-[3rem] space-y-6 md:space-y-8 hover:-translate-y-4 transition-all duration-700 group border-b-[8px] md:border-b-[12px] shadow-2xl relative overflow-hidden"
     style={{ borderBottomColor: color }}
   >
-    <div className="flex items-center gap-5 relative z-10">
-      <div className="p-5 bg-gray-50 dark:bg-gray-900 rounded-[1.5rem] group-hover:scale-110 group-hover:rotate-3 group-hover:bg-white dark:group-hover:bg-gray-700 transition-all shadow-xl">
+    <div className="flex items-center gap-4 md:gap-5 relative z-10">
+      <div className="p-4 md:p-5 bg-gray-50 dark:bg-gray-900 rounded-[1.25rem] md:rounded-[1.5rem] group-hover:scale-110 group-hover:rotate-3 group-hover:bg-white dark:group-hover:bg-gray-700 transition-all shadow-xl">
         {icon}
       </div>
-      <h3 className="font-black text-2xl tracking-tight leading-tight text-gray-900 dark:text-white">{title}</h3>
+      <h3 className="font-black text-xl md:text-2xl tracking-tight leading-tight text-gray-900 dark:text-white">{title}</h3>
     </div>
-    <div className="flex flex-wrap gap-3 relative z-10">
+    <div className="flex flex-wrap gap-2 md:gap-3 relative z-10">
       {items.map(item => {
         const link = TECH_LINKS[item];
         const content = (
